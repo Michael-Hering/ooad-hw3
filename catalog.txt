@@ -1,0 +1,29 @@
+[Painting]
+paintbrush
+paint roller
+mini roller
+paint tray
+
+[Concrete]
+concrete placer
+concrete broom
+squeegee
+trowel
+
+[Plumbing]
+plumber's wrench
+basin wrench
+drain wrench
+pinch clamp tool
+
+[Woodwork]
+impact driver
+miter saw
+jig saw
+sander
+
+[Yardwork]
+mower
+rake
+hoe
+spade

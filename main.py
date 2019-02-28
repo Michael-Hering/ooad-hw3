@@ -41,10 +41,30 @@ def readCustomers(filename):
     return customers
 
 def main():
+    store = Store()
     inv = readCatalog("catalog.txt")
     print(inv)
-    custs = readCustomers("customers.txt")
-    print(custs)
+    customers = readCustomers("customers.txt")
+    print(customers)
+
+    # for 34 day/night cycles
+    for day in range(34):
+        # First process all the returns
+
+
+        # Now rent tools to customers that come
+        # This is a rough outline, may need to change based on implementation
+        if store.getNumberOfTools() > 0:
+            for customer in customers:
+                if customer.isComing(store.getNumberOfTools()):
+                    toolsRented = []
+                    numberNights = customer.getDaysRented()
+                    for i in range(customer.getNumberToolsRented()):
+                        tool = customer.pickTool(store.getTools())
+                        toolsRented.append(tool)
+                        customer.rentTool(tool)
+                        # store.lendTool(tool)?
+                    store.newRental(customer, toolsRented)
 
 if __name__ == "__main__":
     main()

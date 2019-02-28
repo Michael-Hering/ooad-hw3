@@ -5,7 +5,10 @@ class Customer:
         self.name = name
         self.toolsRented = []
 
-    def getTool(tool):
+    def pickTool(tools):
+        return random.choice(tools)
+    
+    def rentTool(tool):
         self.toolsRented.append(tool)
     
     def returnTool(tool):
@@ -13,10 +16,15 @@ class Customer:
         return tool
     
     def getNumberToolsRented():
-        return random.randint(self.minTools, self.maxTools)
+        return min(random.randint(self.minTools, self.maxTools), 3-len(toolsRented))
     
     def getDaysRented():
         return random.randint(self.minDays, self.maxDays)
+
+    # Customer randomly shows up with 50% chance if store has enough tools,
+    # or 0% chance if store doesn't have enough tools
+    def isComing(numAvailable):
+        return numAvailable >= self.minTools and random.random() > 0.5
     
     # for debug purposes, so we can print them out and see what they are
     def __repr__(self):

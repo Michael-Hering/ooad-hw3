@@ -51,8 +51,8 @@ def main():
 
     # for 34 day/night cycles
     for day in range(34):
-        # First process all the returns
-
+        # First process all the returns (customer has already "returned" to store the EXPIRED rental)
+        store.inventoryReturns()
 
         # Now rent tools to customers that come
         # This is a rough outline, may need to change based on implementation
@@ -66,7 +66,7 @@ def main():
                         toolsRented.append(tool)
                         customer.rentTool(tool)
                         # store.lendTool(tool)?
-                    store.newRental(customer, toolsRented)
+                    store.newRental(customer, toolsRented, day)
 
 if __name__ == "__main__":
     main()

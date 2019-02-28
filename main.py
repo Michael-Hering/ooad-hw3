@@ -41,9 +41,11 @@ def readCustomers(filename):
     return customers
 
 def main():
-    store = Store()
     inv = readCatalog("catalog.txt")
     print(inv)
+
+    store = Store(inv)
+    
     customers = readCustomers("customers.txt")
     print(customers)
 

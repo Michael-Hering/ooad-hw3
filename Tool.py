@@ -5,9 +5,8 @@ class Tool:
     def getPricePerDay(self):
         return self._pricePerDay
     
-    # for debug purposes, so we can print them out and see what they are
     def __repr__(self):
-        return type(self).__name__ + "('" + self._name.replace("'","\\'") + "')"
+        return self._name
 
 class PaintingTool(Tool):
     def __init__(self, name):

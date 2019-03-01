@@ -4,6 +4,9 @@ class Customer:
     def __init__(self, name):
         self.__name = name
         self.__toolsRented = []
+    
+    def getName(self):
+        return self.__name
 
     def pickTool(self, tools):
         return random.choice(tools)
@@ -17,9 +20,6 @@ class Customer:
                 self.__toolsRented.remove(pair)
             else:
                 pair[1] -= 1
-    # def returnTool(self, tool):
-    #     self.__toolsRented.remove(tool)
-    #     return tool
     
     def getNumberToolsRented(self):
         return min(random.randint(self._minTools, self._maxTools), 3-len(self.__toolsRented))
@@ -34,7 +34,7 @@ class Customer:
     
     # for debug purposes, so we can print them out and see what they are
     def __repr__(self):
-        return type(self).__name__ + "('" + self.__name.replace("'","\\'") + "')"
+        return self.__name
 
 class CasualCustomer(Customer):
     def __init__(self, name):

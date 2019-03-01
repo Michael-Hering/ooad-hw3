@@ -10,8 +10,8 @@ class Rental:
 
 		#Add a new tool to the rental, discard repeat tools they already have
 		for t in toolsRequested:
-			if t not in toolslist:
-				toolslist.append(t)
+			if t not in self.__toolsList:
+				self.__toolsList.append(t)
 
 	def getStartDay(self):
 		return self.__startDay

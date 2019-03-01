@@ -23,9 +23,9 @@ class Store:
 
 			#Update inventory
 			for tool in toolsRequested:
-				if tool not in rental.getToolsList:
+				if tool not in rental.getToolsList():
 					for item in self.__inventory:
-						if t == item:
+						if tool == item:
 							self.__inventory.remove(item)
 
 			#Create rental
@@ -56,10 +56,10 @@ class Store:
 				for t in toolsReturned:
 					self.__inventory.append(t)
 
-				rentalsToRemove.append(rental)
+				rentalsToRemove.append(customer)
 
-		for r in rentalsToRemove:
-			del self.__activeRentals[r]
+		for cust in rentalsToRemove:
+			del self.__activeRentals[cust]
 
 	def getNumberOfTools(self):
 		return len(self.__inventory)

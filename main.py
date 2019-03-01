@@ -44,15 +44,13 @@ def readCustomers(filename):
 
 def main():
     inv = readCatalog("catalog.txt")
-    print(inv)
 
     store = Store(inv)
     
     customers = readCustomers("customers.txt")
-    print(customers)
 
-    # for 34 day/night cycles
-    for day in range(34):
+    # for 35 night/day cycles
+    for day in range(35):
         # First process all the returns (customer has already "returned" to store the EXPIRED rental)
         store.inventoryReturns(day)
         for customer in customers:

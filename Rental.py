@@ -6,7 +6,7 @@ class Rental:
 		self.__nightsRented = nights
 		
 
-	def updateRental(self, toolsRequested, startDate):
+	def updateRental(self, toolsRequested):
 
 		#Add a new tool to the rental, discard repeat tools they already have
 		for t in toolsRequested:

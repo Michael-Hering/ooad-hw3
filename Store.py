@@ -27,7 +27,7 @@ class Store:
 							self.__inventory.remove(item)
 
 			#Create rental
-			rental.updateRental(toolsRequested, nightsRemaining)
+			rental.updateRental(toolsRequested)
 
 
 		else:
@@ -39,7 +39,7 @@ class Store:
 						self.__inventory.remove(item)
 
 			#Create rental
-			rental = Rental(toolsRequested, nightsRequested)
+			rental = Rental(toolsRequested, currnetDay, nightsRequested)
 
 			
 		self.__activeRentals[customer] = rental
@@ -60,3 +60,13 @@ class Store:
 	
 	def getInventory(self):
 		return self.__inventory
+
+
+
+
+
+
+
+
+
+

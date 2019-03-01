@@ -88,14 +88,3 @@ class Store:
 			rental = self.__activeRentals[customer]
 			gt, amt, nights = [rental.getToolsList(), rental.getAmount(), rental.getNightsRented()]
 			print("Customer %s is currently renting tools %s for %d nights at a cost of %d" % (customer, gt, nights, amt))
-
-
-
-
-
-
-
-
-
-
-

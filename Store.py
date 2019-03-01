@@ -47,6 +47,7 @@ class Store:
 		self.__activeRentals[customer] = rental
 
 	def inventoryReturns(self, currentDay):
+		rentalsToRemove = []
 		for customer in self.__activeRentals.keys():
 			rental = self.__activeRentals[customer]
 			expired = (rental.getNightsRented()) == (currentDay - rental.getStartDay())
@@ -55,7 +56,10 @@ class Store:
 				for t in toolsReturned:
 					self.__inventory.append(t)
 
-				del self.__activeRentals[customer]
+				rentalsToRemove.append(rental)
+
+		for r in rentalsToRemove:
+			del self.__activeRentals[r]
 
 	def getNumberOfTools(self):
 		return len(self.__inventory)

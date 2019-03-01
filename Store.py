@@ -22,7 +22,7 @@ class Store:
 			for tool in toolsRequested:
 				if tool not in rental.getToolsList():
 
-					balance += tool.getPricePerDay()*nightsRemaining
+					self.__balance += tool.getPricePerDay()*nightsRemaining
 
 					for item in self.__inventory:
 						if tool == item:
@@ -37,7 +37,7 @@ class Store:
 			#Update inventory & balance
 			for t in toolsRequested:
 
-				balance += tool.getPricePerDay()*nightsRequested
+				self.__balance += t.getPricePerDay()*nightsRequested
 
 
 				for item in self.__inventory:
@@ -78,7 +78,7 @@ class Store:
 
 	def printReport(self):
 
-		print("Number of tools currently in the store: %d\nInventory List: %s" %(self.getNumberOfTools(), inventory))
+		print("Number of tools currently in the store: %d\nInventory List: %s" %(self.getNumberOfTools(), self.__inventory))
 		print("Amount of money that the store made: %d" %self.__balance)
 		print("Completed Rentals: ")
 		for cust, gt, amt, nights in self.__rentalHistory:

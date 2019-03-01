@@ -5,7 +5,7 @@ class Rental:
 		self.__startDay = startDay
 		self.__nightsRented = nights
 		amt = 0
-		for tool in toolslist:
+		for tool in self.__toolsList:
 			amt += tool.getPricePerDay()*nights
 		self.__totalAmount = amt
 		
@@ -17,7 +17,7 @@ class Rental:
 		for t in toolsRequested:
 			if t not in self.__toolsList:
 				self.__toolsList.append(t)
-				amt += tool.getPricePerDay()*nightsRemaining
+				amt += t.getPricePerDay()*nightsRemaining
 		self.__totalAmount += amt
 
 	def getStartDay(self):

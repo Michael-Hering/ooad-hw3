@@ -3,7 +3,7 @@ class Tool:
         return self._name
     
     def getPricePerDay(self):
-        return self.__pricePerDay
+        return self._pricePerDay
     
     # for debug purposes, so we can print them out and see what they are
     def __repr__(self):
@@ -12,24 +12,24 @@ class Tool:
 class PaintingTool(Tool):
     def __init__(self, name):
         self._name = name
-        self.__pricePerDay = 5.00
+        self._pricePerDay = 5.00
 
 class ConcreteTool(Tool):
     def __init__(self, name):
         self._name = name
-        self.__pricePerDay = 15.00
+        self._pricePerDay = 15.00
 
 class PlumbingTool(Tool):
     def __init__(self, name):
         self._name = name
-        self.__pricePerDay = 10.00
+        self._pricePerDay = 10.00
 
 class WoodworkTool(Tool):
     def __init__(self, name):
         self._name = name
-        self.__pricePerDay = 20.00
+        self._pricePerDay = 20.00
 
 class YardworkTool(Tool):
     def __init__(self, name):
         self._name = name
-        self.__pricePerDay = 7.50
+        self._pricePerDay = 7.50

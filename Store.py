@@ -17,13 +17,14 @@ class Store:
 			#nights = nightsRequested - nights that have already passed
 			nightsRemaining = nightsRequested - (currentDay - rental.startDay)
 
-			#--------------------------------------------------------------do we need to check for tools here?
+			#Check for past tools
 
 			#Update inventory
-			for t in toolsRequested:
-				for item in self.__inventory:
-					if t == item:
-						self.__inventory.remove(item)
+			for tool in toolsRequested:
+				if tool not in rental.getToolsList:
+					for item in self.__inventory:
+						if t == item:
+							self.__inventory.remove(item)
 
 			#Create rental
 			rental.updateRental(toolsRequested, nightsRemaining)
@@ -38,7 +39,6 @@ class Store:
 						self.__inventory.remove(item)
 
 			#Create rental
-
 			rental = Rental(toolsRequested, nightsRequested)
 
 			

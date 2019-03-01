@@ -1,5 +1,7 @@
 from Tool import *
 from Customer import *
+from Rental import *
+from Store import *
 
 def readCatalog(filename):
     inventory = []
@@ -52,7 +54,7 @@ def main():
     # for 34 day/night cycles
     for day in range(34):
         # First process all the returns (customer has already "returned" to store the EXPIRED rental)
-        store.inventoryReturns()
+        store.inventoryReturns(day)
         for customer in customers:
             customer.manageRentedTools()
 
@@ -66,8 +68,7 @@ def main():
                     for i in range(customer.getNumberToolsRented()):
                         tool = customer.pickTool(store.getInventory())
                         toolsRented.append(tool)
-                        customer.rentTool(tool)
-                        # store.lendTool(tool)?
+                        customer.rentTool(tool, numberNights)
                     store.newRental(customer, toolsRented, day)
 
 if __name__ == "__main__":

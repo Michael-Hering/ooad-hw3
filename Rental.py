@@ -1,6 +1,6 @@
 class Rental:
 
-	def __init__(self, toolslist, startDay, nights)
+	def __init__(self, toolslist, startDay, nights):
 		self.__toolsList = toolslist
 		self.__startDay = startDay
 		self.__nightsRented = nights
@@ -13,13 +13,13 @@ class Rental:
 			if t not in toolslist:
 				toolslist.append(t)
 
-	def getStartDay():
+	def getStartDay(self):
 		return self.__startDay
 
-	def getNightsRented():
+	def getNightsRented(self):
 		return self.__nightsRented
 
-	def getToolsList():
+	def getToolsList(self):
 		return self.__toolsList
 
 

@@ -1,3 +1,5 @@
+from Rental import *
+
 class Store:
 
 	def __init__(self, inv):
@@ -15,7 +17,7 @@ class Store:
 			rental = self.__activeRentals[customer]
 
 			#nights = nightsRequested - nights that have already passed
-			nightsRemaining = nightsRequested - (currentDay - rental.startDay)
+			nightsRemaining = nightsRequested - (currentDay - rental.getStartDay())
 
 			#Check for past tools
 
@@ -39,12 +41,12 @@ class Store:
 						self.__inventory.remove(item)
 
 			#Create rental
-			rental = Rental(toolsRequested, currnetDay, nightsRequested)
+			rental = Rental(toolsRequested, currentDay, nightsRequested)
 
 			
 		self.__activeRentals[customer] = rental
 
-	def inventoryReturns(self):
+	def inventoryReturns(self, currentDay):
 		for customer in self.__activeRentals.keys():
 			rental = self.__activeRentals[customer]
 			expired = (rental.getNightsRented()) == (currentDay - rental.getStartDay())

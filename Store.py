@@ -9,9 +9,9 @@ class Store:
 
 	def newRental(self, customer, toolsRequested, currentDay):
 
-		nightsRequested = customer.getDaysRented();
+		nightsRequested = customer.getDaysRented()
 
-		if customer in self.__activeRentals.keys();
+		if customer in self.__activeRentals.keys():
 			rental = self.__activeRentals[customer]
 
 			#nights = nightsRequested - nights that have already passed

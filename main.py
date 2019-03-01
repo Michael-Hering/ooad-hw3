@@ -68,6 +68,8 @@ def main():
                         toolsRented.append(tool)
                         customer.rentTool(tool, numberNights)
                     store.newRental(customer, toolsRented, numberNights, day)
+        
+    store.printReport()
 
 if __name__ == "__main__":
     main()

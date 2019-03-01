@@ -44,7 +44,7 @@ class Store:
 			
 		self.__activeRentals[customer] = rental
 
-	def reInventoryReturns(self):
+	def inventoryReturns(self):
 		for customer in self.__activeRentals.keys():
 			rental = self.__activeRentals[customer]
 			expired = (rental.getNightsRented()) == (currentDay - rental.getStartDay())

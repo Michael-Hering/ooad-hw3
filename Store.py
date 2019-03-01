@@ -56,4 +56,7 @@ class Store:
 				del self.__activeRentals[customer]
 
 	def getNumberOfTools(self):
-		return len(inv)
+		return len(self.__inventory)
+	
+	def getInventory(self):
+		return self.__inventory

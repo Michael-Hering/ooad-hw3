@@ -62,7 +62,7 @@ def main():
                     toolsRented = []
                     numberNights = customer.getDaysRented()
                     for i in range(customer.getNumberToolsRented()):
-                        tool = customer.pickTool(store.getTools())
+                        tool = customer.pickTool(store.getInventory())
                         toolsRented.append(tool)
                         customer.rentTool(tool)
                         # store.lendTool(tool)?

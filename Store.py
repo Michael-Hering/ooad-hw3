@@ -57,7 +57,7 @@ class Store:
 			expired = (rental.getNightsRented()) == (currentDay - rental.getStartDay())
 			if expired:
 				toolsReturned = rental.getToolsList()
-				for t in toolsReturned:
+				for t,n in toolsReturned:
 					self.__inventory.append(t)
 
 				rentalsToRemove.append(customer)
@@ -82,9 +82,22 @@ class Store:
 		print("Amount of money that the store made: %d" %self.__balance)
 		print("Completed Rentals: ")
 		for cust, gt, amt, nights in self.__rentalHistory:
-			print("Customer %s rented tools %s for %d nights at a cost of %d" % (cust, gt, nights, amt))
+			print("Customer %s rented tools: " % cust)
+			for t,n in gt:
+				print("%s for %d nights" % (t, n))
+			print("at a total cost of %d" % amt)
 		print("Active rentals:")
 		for customer in self.__activeRentals.keys():
 			rental = self.__activeRentals[customer]
 			gt, amt, nights = [rental.getToolsList(), rental.getAmount(), rental.getNightsRented()]
-			print("Customer %s is currently renting tools %s for %d nights at a cost of %d" % (customer, gt, nights, amt))
+			print("Customer %s is currently renting tools: " % customer) 
+			for t,n in gt:
+				print("%s for %d nights" % (t, n))
+			print("at a total cost of %d" % amt)
+
+
+
+
+
+
+

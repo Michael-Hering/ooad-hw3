@@ -53,6 +53,8 @@ def main():
     for day in range(34):
         # First process all the returns (customer has already "returned" to store the EXPIRED rental)
         store.inventoryReturns()
+        for customer in customers:
+            customer.manageRentedTools()
 
         # Now rent tools to customers that come
         # This is a rough outline, may need to change based on implementation

@@ -5,20 +5,26 @@ class Customer:
         self.__name = name
         self.__toolsRented = []
 
-    def pickTool(tools):
+    def pickTool(self, tools):
         return random.choice(tools)
     
-    def rentTool(tool):
-        self.__toolsRented.append(tool)
+    def rentTool(self, tool, days):
+        self.__toolsRented.append([tool, days])
     
-    def returnTool(tool):
-        self.__toolsRented.remove(tool)
-        return tool
+    def manageRentedTools(self):
+        for pair in self.__toolsRented:
+            if pair[1] == 0:
+                self.__toolsRented.remove(pair)
+            else:
+                pair[1] -= 1
+    # def returnTool(self, tool):
+    #     self.__toolsRented.remove(tool)
+    #     return tool
     
-    def getNumberToolsRented():
+    def getNumberToolsRented(self):
         return min(random.randint(self.__minTools, self.__maxTools), 3-len(toolsRented))
     
-    def getDaysRented():
+    def getDaysRented(self):
         return random.randint(self.__minDays, self.__maxDays)
 
     # Customer randomly shows up with 50% chance if store has enough tools,

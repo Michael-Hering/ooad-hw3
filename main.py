@@ -67,7 +67,7 @@ def main():
                         tool = customer.pickTool(store.getInventory())
                         toolsRented.append(tool)
                         customer.rentTool(tool, numberNights)
-                    store.newRental(customer, toolsRented, day)
+                    store.newRental(customer, toolsRented, numberNights, day)
 
 if __name__ == "__main__":
     main()

@@ -6,12 +6,9 @@ class Store:
 		self.__activeRentals = {}
 		self.__rentalHistory = []
 		self.__inventory = inv
-		self.__numberOfTools = len(inv)
 		self.__balance = 0
 
-	def newRental(self, customer, toolsRequested, currentDay):
-
-		nightsRequested = customer.getDaysRented()
+	def newRental(self, customer, toolsRequested, nightsRequested, currentDay):
 
 		if customer in self.__activeRentals.keys():
 			rental = self.__activeRentals[customer]
@@ -21,21 +18,28 @@ class Store:
 
 			#Check for past tools
 
-			#Update inventory
+			#Update inventory & balance
 			for tool in toolsRequested:
 				if tool not in rental.getToolsList():
+
+					balance += tool.getPricePerDay()*nightsRemaining
+
 					for item in self.__inventory:
 						if tool == item:
 							self.__inventory.remove(item)
 
-			#Create rental
-			rental.updateRental(toolsRequested)
+			#Update rental
+			rental.updateRental(toolsRequested, nightsRemaining)
 
 
 		else:
 			
-			#Update inventory
+			#Update inventory & balance
 			for t in toolsRequested:
+
+				balance += tool.getPricePerDay()*nightsRequested
+
+
 				for item in self.__inventory:
 					if t == item:
 						self.__inventory.remove(item)
@@ -58,7 +62,12 @@ class Store:
 
 				rentalsToRemove.append(customer)
 
+
+		#Delete rental and update history
 		for cust in rentalsToRemove:
+			rental = self.__activeRentals[cust]
+			self.__rentalHistory.append([cust, rental.getToolsList(), rental.getAmount(), rental.getNightsRented()])
+
 			del self.__activeRentals[cust]
 
 	def getNumberOfTools(self):
@@ -66,6 +75,20 @@ class Store:
 	
 	def getInventory(self):
 		return self.__inventory
+
+	def printReport(self):
+
+		print("Number of tools currently in the store: %d\nInventory List: %s" %(self.getNumberOfTools(), inventory))
+		print("Amount of money that the store made: %d" %self.__balance)
+		print("Completed Rentals: ")
+		for cust, gt, amt, nights in self.__rentalHistory:
+			print("Customer %s rented tools %s for %d nights at a cost of %d" % (cust, gt, nights, amt))
+		print("Active rentals:")
+		for customer in self.__activeRentals.keys():
+			rental = self.__activeRentals[customer]
+			gt, amt, nights = [rental.getToolsList(), rental.getAmount(), rental.getNightsRented()]
+			print("Customer %s is currently renting tools %s for %d nights at a cost of %d" % (customer, gt, nights, amt))
+
 
 
 
